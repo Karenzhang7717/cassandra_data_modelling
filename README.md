@@ -24,7 +24,7 @@ Primary key: both sessionId and itemInSession are set to be primary keys to make
 
 Primary key:
 
-We are asked to filter data by userId and sessionId, itemInSession also needs to be sorted. To make the primary keys unique, we set userId, sessionId, itemInSession to be the primary key. The partition key is set to be userId as this is the primary way the data being filtered. Cluster keys are sessionId and itemInSession, and they are set to be ordered in descending order.
+We are asked to filter data by userId and sessionId, itemInSession also needs to be sorted. To make the primary keys unique, we set userId, sessionId, itemInSession to be the primary key. userId together with sessionId are set to be the composite partition key. It'll improve overall performance because the userId data will be spread among more than just one node and it'll be much faster to look for a specific session_id. The clustering key is itemInSession as it helps to make the key unique.
 
 *Query3:*
 
